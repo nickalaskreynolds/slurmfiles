@@ -1,0 +1,19 @@
+#!/bin/bash
+uname=$(whoami)
+queue=($(squeue --start -u ${uname}| awk '{print $1}' | sed '1d'))
+for i in "${queue[@]}"; do
+    scancel $i
+    echo "Cancelled ${i}"
+done
+queue=($(squeue -u ${uname}| awk '{print $1}' | sed '1d'))
+for i in "${queue[@]}"; do
+    scancel $i
+    echo "Cancelled ${i}"
+done
+
+
+
+
+
+
+

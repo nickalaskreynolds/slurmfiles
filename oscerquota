@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+limit=20
+totalbytes=$(du --max-depth=1 ~/| sort -h | tail -n1 | awk -F' ' '{print $1}')
+totalgb=$(bc <<< "scale=2 ; ${totalbytes}/1024./1024.")
+echo "${totalgb}/${limit} GB" 
+
